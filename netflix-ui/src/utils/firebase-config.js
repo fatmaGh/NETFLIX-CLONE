@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase-auth";
+import { getAuth } from "../../node_modules/firebase/auth/";
 const firebaseConfig = {
   apiKey: "AIzaSyC6JrHVCyWWnw5UVTgtaXcRQS26mf6Z2pg",
   authDomain: "react-netflix-clone-1367a.firebaseapp.com",
