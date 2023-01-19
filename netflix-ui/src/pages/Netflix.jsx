@@ -5,7 +5,6 @@ export default function Netflix() {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
-
     return () => {
       window.onscroll = null; //window.removeEventListener('scroll',handleScroll)
     };

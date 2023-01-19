@@ -6,15 +6,15 @@ import { FaPowerOff, FaSearch } from "react-icons/fa";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 export default function Navbar({ isScrolled }) {
+  const [showSearch, setShowSearch] = useState(false);
+  const [inputHover, setInputHover] = useState(false);
+  const navigate = useNavigate();
   const Links = [
     { name: "Home", link: "/" },
     { name: "Tv Shows", link: "/tv" },
     { name: "Movies", link: "/movies" },
     { name: "My List", link: "/mylist" },
   ];
-  const [showSearch, setShowSearch] = useState(false);
-  const [inputHover, setInputHover] = useState(false);
-  const navigate = useNavigate();
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (!currentUser) navigate("/login");
   });
@@ -25,13 +25,11 @@ export default function Navbar({ isScrolled }) {
           <div className="brand flex a-center j-center">
             <img src={logo} alt="logo" />
           </div>
-          <ul className="links flex">
-            {Links.map(({ name, link }) => {
-              return (
-                <li key={name}>
-                  <Link to={link}>{name}</Link>
-                </li>
-              );
+          <ul className="links flex" >
+            {Links.map(({name,link})=>{
+              return(
+                <li><Link to={link}>{name}</Link></li>
+              )
             })}
           </ul>
         </div>
@@ -141,7 +139,6 @@ const Container = styled.div`
       }
       .visibleSearch {
         border: 1px solid white;
-        background-color: rgba(0, 0, 0, 0.6);
         input {
           width: 100%;
           opacity: 1;
